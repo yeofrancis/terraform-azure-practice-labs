@@ -17,7 +17,11 @@ variable "virtual_network_name" {
   type        = string
   default     = "vnet-terraform-01"
 }
-
+variable "vnet_address_space" {
+    description = "The address space of the Virtual Network"
+    type        = list(string)
+    default     = ["10.0.0.0/16"]  
+}
 variable "subnet_name" {
   description = "The name of the Subnet"
   type        = string
@@ -29,3 +33,12 @@ variable "subnet_address_prefix" {
   default     = ["10.0.1.0/24"]
 }
 
+variable "tags" {
+  description = "A map of tags to assign to the resources"
+  type        = map(string)
+  default     = {
+    env = "Development"
+    project     = "Terraform Azure Practice Labs"
+    owner       = "francis"
+  }
+}
